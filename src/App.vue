@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Infinity War Game" />   
-    <CsButton label=""  />
-
+    <HelloWorld msg="Fighting Game"/>  
+    <CsButton label=""/>
 
   </div>
 </template>
@@ -19,9 +18,7 @@ export default {
 
   data: function () {
     return {
-    min: 1,
-    max: 10,
-    number: 1,
+      
     };
   },
 
@@ -33,12 +30,14 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
+font-family: 'Metal Mania', cursive;  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  
 }
+/*body{
+  background-image: url(./assets/b1.gif);
+  background-attachment:fixed;
+}*/
 </style>
