@@ -105,13 +105,6 @@ export default {
       this.randomMonsterAttack = Math.max(Math.floor(Math.random() * 15) + 1, 5);
       this.hp1 -= this.randomMonsterAttack 
     },
-
-    /* randomStart: function () {
-      this.randomChar = Math.floor(Math.random() * (10 - 1 + 1)) + 1
-    },
-    randomDamage: function () {
-      this.randomAct = Math.floor(Math.random() * (10 - 1 + 1)) + 1
-    },*/
   },
 };
 </script>
