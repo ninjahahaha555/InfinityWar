@@ -1,41 +1,60 @@
 <template>
   <div>
-    
-    <button @click="randomStart()" class="btn btn-danger">Start{{Label}}</button>
-    <div class="row">
-      <div class="col-12">
-        <button @click="randomDamage()" class="btn btn-info">Attack{{Label}}</button>
-        <button @click="randomSpDamage()" class="btn btn-info">Special Attack{{Label}}</button>
-      </div>
-    </div>
-    
-    <p v-if="hp1 <= -1 ">
-      <img src="https://cdn.discordapp.com/attachments/392353546332405763/746076980524613713/pngegg.png"/>
-    </p>
-    <p v-else-if="hp2 <= -1 ">
-      <img src="https://cdn.discordapp.com/attachments/392353546332405763/746080751300247642/pngegg_2.png" height="500" width="700"/>
-    </p>
-    
-    
+    <v-button @click="randomStart()" class="btn">
+      <img
+        src="https://cdn.discordapp.com/attachments/392353546332405763/747437885476700160/pngegg_11.png"
+      />
+    </v-button>
+    <br />
+    <button v-bind:disabled="end" @click="randomDamage()" class="btn btn-info">Attack{{Label}}</button>
+    <button
+      v-bind:disabled="end"
+      @click="randomSpDamage()"
+      class="btn btn-info"
+    >Special Attack{{Label}}</button>
 
-    <div class="row">
-      <div class="col-4 ">
+    <div class="row text-light ">
+      <div class="col-sm">
         <p>{{randomPlayer}}</p>
-        <p>HP : {{hp1}}</p> 
-        <img :src="image1">
-      </div>
-      
-      <div class="col-4">
-        <br><br><br><br>
-        <img src="https://cdn.discordapp.com/attachments/392353546332405763/746090155282006126/pngegg_6.png">
+        <p>HP : {{hp1}}</p>
+        <p>
+          <img v-bind:style="{width : hp1 + 'px'}" :src="healthbar1" alt height="25px" />
+        </p>
+        <img :src="imagePlayer" :height="hp1" />
       </div>
 
-      <div class="col-4">
+      <div class="col-sm">
+        <h1 v-if="hp1 <= 0 ">
+          <br />
+          <img src="https://lh3.googleusercontent.com/proxy/grMJMZ4aGoD-1mQtKWvqXh4zuaEWW47l1nirZw_E8B4hR2Or3Xnce6LPym46UgB0PEDphc7ri4Gb9024wJCHw5SJw3b-46oSVxVYumgVC81SwvgmjgKE3vb1m27amFOaCDtHVQlUo8wuM-GIvUI9cBDQ2G2onAyuhHoQFXjr1lz6L6kKl2xkS2XR1xokkUUhLRqPhVRCrcLYYHDtK2ylMgil1-U-RVA">
+          {{randomMonster}} WIN
+        </h1>
+        <h1 v-else-if="hp2 <= 0 ">
+          <br />
+          <img src="https://lh3.googleusercontent.com/proxy/grMJMZ4aGoD-1mQtKWvqXh4zuaEWW47l1nirZw_E8B4hR2Or3Xnce6LPym46UgB0PEDphc7ri4Gb9024wJCHw5SJw3b-46oSVxVYumgVC81SwvgmjgKE3vb1m27amFOaCDtHVQlUo8wuM-GIvUI9cBDQ2G2onAyuhHoQFXjr1lz6L6kKl2xkS2XR1xokkUUhLRqPhVRCrcLYYHDtK2ylMgil1-U-RVA">
+          {{randomPlayer}} WIN
+        </h1>
+        <h1 v-else-if="hp1 <= 0 & hp2 <=0">
+          <br />
+          <img src="https://lh3.googleusercontent.com/proxy/grMJMZ4aGoD-1mQtKWvqXh4zuaEWW47l1nirZw_E8B4hR2Or3Xnce6LPym46UgB0PEDphc7ri4Gb9024wJCHw5SJw3b-46oSVxVYumgVC81SwvgmjgKE3vb1m27amFOaCDtHVQlUo8wuM-GIvUI9cBDQ2G2onAyuhHoQFXjr1lz6L6kKl2xkS2XR1xokkUUhLRqPhVRCrcLYYHDtK2ylMgil1-U-RVA">
+          DRAW
+        </h1>
+        <br /><br /><br /><br />
+        <p v-if="hp1!=0 & hp2!=0">
+          <img
+            src="https://cdn.discordapp.com/attachments/392353546332405763/746090155282006126/pngegg_6.png"
+          />
+        </p>
+      </div>
+
+      <div class="col-sm">
         <p>{{randomMonster}}</p>
         <p>HP : {{hp2}}</p>
-        <img :src="image2">
+        <p>
+          <img v-bind:style="{width: hp2 + 'px'}" :src="healthbar2" alt height="25px" />
+        </p>
+        <img :src="imageMonster" :height="hp2" />
       </div>
-      
     </div>
   </div>
 </template>
@@ -44,29 +63,108 @@
 export default {
   data: function () {
     return {
+      randomPlayer: "",
+      randomMonster: "",
       randomPlayerAttack: "",
       randomMonsterAttack: "",
-      randomSpAttack: "",
-      image1:"",
-      image2:"",
-      hp1:" ",
-      hp2:" ",
-      
+      chosenNumber1:"",
+      chosenNumber2:"",
+      imagePlayer: "",
+      imageMonster: "",
+      hp1: "1",
+      hp2: "1",
+      end: false,
+      healthbar1:
+        "https://i.ppy.sh/bca61e3c2183a86ddb4c1d75914fab845e2b128f/687474703a2f2f692e696d6775722e636f6d2f6953766c5662432e706e67",
+      healthbar2:
+        "https://i.ppy.sh/bca61e3c2183a86ddb4c1d75914fab845e2b128f/687474703a2f2f692e696d6775722e636f6d2f6953766c5662432e706e67",
+
       player: [
-        { name: "Naruto", hp: 160, image: "https://cdn.discordapp.com/attachments/709406382134263882/745700630621978634/pngegg_18.png" },
-        { name: "Luffy", hp: 170, image: "https://cdn.discordapp.com/attachments/709406382134263882/745699838108106912/pngegg_16.png" },
-        { name: "Jotaro", hp: 180, image: "https://cdn.discordapp.com/attachments/709406382134263882/745698358089351298/pngegg_11.png" },
-        { name: "Goku", hp: 190, image: "https://cdn.discordapp.com/attachments/709406382134263882/745701713880809493/pngegg_21.png" },
+        {
+          name: "Naruto",
+          hp: 380,
+          image1:
+            "https://screenshots.gamebanana.com/img/ico/sprays/naruto.gif",
+          image2:
+            "https://cdn2.scratch.mit.edu/get_image/gallery/25770700_170x100.png",
+          image3:
+            "https://thumbs.gfycat.com/VagueNauticalGander-size_restricted.gif"
+        },
+        {
+          name: "Spiderman",
+          hp: 360,
+          image1:
+            "https://pa1.narvii.com/7636/10cd8a5295c4c7ed8d857577a9401398d390b3c7r1-200-200_00.gif",
+          image2:
+            "https://www.fightersgeneration.com/characters3/spidey-upper.gif",
+          image3:
+            "https://www.fightersgeneration.com/characters3/spidey-standingattax.gif",
+        },
+        {
+          name: "Jotaro",
+          hp: 390,
+          image1:
+            "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/8b438fb8-4b3d-4adc-9679-e7c3ba060401/d5b41aj-af8b0a3a-a865-46f0-93f5-a900da7845ad.gif",
+          image2:
+            "https://cdn.discordapp.com/attachments/392353546332405763/747693531371536394/jotaropunc.gif",
+          image3:
+            "https://pa1.narvii.com/6087/583c1a9308bb9025612a44d3cab4539ebb9c8be0_00.gif",
+        },
+        {
+          name: "Goku",
+          hp: 350,
+          image1:
+            "https://www.andersonkenya1.net/uploads/monthly_2017_08/0.thumb.gif.88cfc11795b1ade54b18dda55b41a6d0.gif",
+          image2:
+            "https://i.gifer.com/origin/8f/8f07b22f9b33e306b65d051ef2fabbb4_w200.webp",
+          image3:
+            "https://vignette.wikia.nocookie.net/liberproeliis/images/3/3e/037d55b01bb3adecb88fcdff5b594465.gif/revision/latest/scale-to-width-down/340?cb=20191116172934",
+        },
+        {
+          name: "Captain American",
+          hp: 360,
+          image1:
+            "https://i.pinimg.com/originals/17/a4/0d/17a40d4465ae6c523a6376efcbe58ad4.gif",
+          image2:
+            "https://www.fightersgeneration.com/characters/captainamerica-chargingstar.gif",
+          image3:
+            "https://i.kym-cdn.com/photos/images/original/000/709/072/e1f.gif",
+        },
       ],
-      randomPlayer: "",
-      //ค่าพลังของ ตัวละคร เข้าถึงโดย player[1].hp -= 20
       monster: [
-        { name: "Majin Buu", hp: 250, image: "https://cdn.discordapp.com/attachments/709406382134263882/745697479609155594/pngegg_10.png" },
-        { name: "Dr. Ottoput", hp: 220, image: "https://cdn.discordapp.com/attachments/709406382134263882/745701419905974412/pngegg_20.png" },
-        { name: "Death Gun", hp: 210, image: "https://cdn.discordapp.com/attachments/709406382134263882/745691551497191525/pngegg_1.png" },
-        { name: "Dio", hp: 200, image: "https://cdn.discordapp.com/attachments/709406382134263882/745698736616767508/pngegg_12.png" },
+        {
+          name: "Majin Buu",
+          hp: 430,
+          image1:
+            "https://cdn.discordapp.com/attachments/392353546332405763/747688200516141056/buuevo.gif",
+          image2:
+            "https://cdn.discordapp.com/attachments/392353546332405763/747689281098743899/buupunch.gif",
+        },
+        {
+          name: "Freezer",
+          hp: 420,
+          image1:
+            "https://cdn.discordapp.com/attachments/392353546332405763/747719492217602128/fizzzzzzzzzz.gif",
+          image2:
+            "https://cdn.discordapp.com/attachments/392353546332405763/747717126663700510/fezzerrr.gif",
+        },
+        {
+          name: "Venom",
+          hp: 400,
+          image1:
+            "https://cdn.discordapp.com/attachments/392353546332405763/747774972889661450/m-venomdd.gif",
+          image2:
+            "https://cdn.discordapp.com/attachments/392353546332405763/747774450799476756/Z8Du.gif",
+        },
+        {
+          name: "Dio",
+          hp: 410,
+          image1:
+            "https://thumbs.gfycat.com/FaithfulPointedBushsqueaker-size_restricted.gif",
+          image2:
+            "https://cdn.discordapp.com/attachments/392353546332405763/747690217900736552/diopu.gif",
+        },
       ],
-      randomMonster: "",
     };
   },
 
@@ -76,34 +174,54 @@ export default {
 
   methods: {
     randomStart: function () {
-      var chosenNumber1 = Math.floor(Math.random() * this.player.length);
-      this.randomPlayer = this.player[chosenNumber1].name;
-      this.hp1=this.player[chosenNumber1].hp;
-      this.image1=this.player[chosenNumber1].image;
+      this.chosenNumber1 = Math.floor(Math.random() * this.player.length);
+      this.randomPlayer = this.player[this.chosenNumber1].name;
+      this.hp1 = this.player[this.chosenNumber1].hp;
+      this.imagePlayer = this.player[this.chosenNumber1].image1;
 
-      var chosenNumber2 = Math.floor(Math.random() * this.monster.length);
-      this.randomMonster = this.monster[chosenNumber2].name;
-      this.hp2=this.monster[chosenNumber2].hp;
-      this.image2=this.monster[chosenNumber2].image;
-
+      this.chosenNumber2 = Math.floor(Math.random() * this.monster.length);
+      this.randomMonster = this.monster[this.chosenNumber2].name;
+      this.hp2 = this.monster[this.chosenNumber2].hp;
+      this.imageMonster = this.monster[this.chosenNumber2].image1;
+      this.end = false;
     },
 
     randomDamage: function () {
       this.randomPlayerAttack = Math.max(Math.floor(Math.random() * 10) + 1, 3);
-      this.hp2 -= this.randomPlayerAttack
-
-      this.randomMonsterAttack = Math.max(Math.floor(Math.random() * 15) + 1, 5);
-      this.hp1 -= this.randomMonsterAttack    
+      this.hp2 -= this.randomPlayerAttack;
+      this.imagePlayer = this.player[this.chosenNumber1].image2;      
       
+      this.randomMonsterAttack = Math.max(Math.floor(Math.random() * 15) + 1,5);
+      this.hp1 -= this.randomMonsterAttack;
+      this.imageMonster = this.monster[this.chosenNumber2].image2;
+
+      if (this.hp1 <= 0) {
+        this.hp1 = 0;
+        this.end = true;
+
+      } else if (this.hp2 <= 0) {
+        this.hp2 = 0;
+        this.end = true;             
+      }
       
     },
 
     randomSpDamage: function () {
-      this.randomPlayerAttack = Math.max(Math.floor(Math.random() * 20) + 1, 10);
-      this.hp2 -= this.randomPlayerAttack
+      this.randomPlayerAttack = Math.max(Math.floor(Math.random() * 20) + 1,10);
+      this.hp2 -= this.randomPlayerAttack;
+      this.imagePlayer = this.player[this.chosenNumber1].image3;      
 
-      this.randomMonsterAttack = Math.max(Math.floor(Math.random() * 15) + 1, 5);
-      this.hp1 -= this.randomMonsterAttack 
+      this.randomMonsterAttack = Math.max(Math.floor(Math.random() * 15) + 1,5);
+      this.hp1 -= this.randomMonsterAttack;
+      this.imageMonster = this.monster[this.chosenNumber2].image2;    
+
+      if (this.hp1 <= 0) {
+        this.hp1 = 0;
+        this.end = true;
+      } else if (this.hp2 <= 0) {
+        this.hp2 = 0;
+        this.end = true;
+      }
     },
   },
 };

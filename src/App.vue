@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Fighting Game"/>  
-    <CsButton label=""/>
-
+    <HelloWorld msg="Fighting Game" />
+    <CsButton label />
   </div>
 </template>
 
@@ -17,27 +16,27 @@ export default {
   },
 
   data: function () {
-    return {
-      
-    };
+    return {};
   },
 
-  methods: {
-    
-  },
+  methods: {},
 };
 </script>
 
 <style>
 #app {
-font-family: 'Metal Mania', cursive;  -webkit-font-smoothing: antialiased;
+  font-family: "Metal Mania", cursive;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
-/*body{
+body {
   background-image: url(./assets/b1.gif);
-  background-attachment:fixed;
-}*/
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+}
 </style>
