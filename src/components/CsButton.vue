@@ -22,17 +22,17 @@
       <div class="col-sm text-danger">
         <h1 v-if="hp1 <= 0 & hp2 <=0">
           <br />
-          <img src="https://lh3.googleusercontent.com/proxy/grMJMZ4aGoD-1mQtKWvqXh4zuaEWW47l1nirZw_E8B4hR2Or3Xnce6LPym46UgB0PEDphc7ri4Gb9024wJCHw5SJw3b-46oSVxVYumgVC81SwvgmjgKE3vb1m27amFOaCDtHVQlUo8wuM-GIvUI9cBDQ2G2onAyuhHoQFXjr1lz6L6kKl2xkS2XR1xokkUUhLRqPhVRCrcLYYHDtK2ylMgil1-U-RVA">
+          <img src="https://cdn.discordapp.com/attachments/392353546332405763/748200974153154640/235-2359549_street-fighter-ko-png-ko-street-fighter-png.png">
           DRAW
         </h1>
         <h1 v-else-if="hp2 <= 0 ">
           <br />
-          <img src="https://lh3.googleusercontent.com/proxy/grMJMZ4aGoD-1mQtKWvqXh4zuaEWW47l1nirZw_E8B4hR2Or3Xnce6LPym46UgB0PEDphc7ri4Gb9024wJCHw5SJw3b-46oSVxVYumgVC81SwvgmjgKE3vb1m27amFOaCDtHVQlUo8wuM-GIvUI9cBDQ2G2onAyuhHoQFXjr1lz6L6kKl2xkS2XR1xokkUUhLRqPhVRCrcLYYHDtK2ylMgil1-U-RVA">
+          <img src="https://cdn.discordapp.com/attachments/392353546332405763/748200974153154640/235-2359549_street-fighter-ko-png-ko-street-fighter-png.png">
           {{randomPlayer}} WIN
         </h1>
         <h1 v-else-if="hp1 <= 0 ">
           <br />
-          <img src="https://lh3.googleusercontent.com/proxy/grMJMZ4aGoD-1mQtKWvqXh4zuaEWW47l1nirZw_E8B4hR2Or3Xnce6LPym46UgB0PEDphc7ri4Gb9024wJCHw5SJw3b-46oSVxVYumgVC81SwvgmjgKE3vb1m27amFOaCDtHVQlUo8wuM-GIvUI9cBDQ2G2onAyuhHoQFXjr1lz6L6kKl2xkS2XR1xokkUUhLRqPhVRCrcLYYHDtK2ylMgil1-U-RVA">
+          <img src="https://cdn.discordapp.com/attachments/392353546332405763/748200974153154640/235-2359549_street-fighter-ko-png-ko-street-fighter-png.png">
           {{randomMonster}} WIN
         </h1>
         <br /><br /><br />
@@ -80,11 +80,11 @@ export default {
           name: "Naruto",
           hp: 380,
           image1:
-            "https://screenshots.gamebanana.com/img/ico/sprays/naruto.gif",
+            "https://pa1.narvii.com/5999/831c04cee5973592fd427841a4e45d9d78e49cf2_00.gif",
           image2:
-            "https://cdn2.scratch.mit.edu/get_image/gallery/25770700_170x100.png",
+            "https://steamuserimages-a.akamaihd.net/ugc/273972713572251875/235FD90C716AE0A1550310AD5C78B601A721024E/",
           image3:
-            "https://thumbs.gfycat.com/VagueNauticalGander-size_restricted.gif"
+            "https://www.lordofthecraft.net/uploads/monthly_2019_05/narutoc200.gif.6e814768c713f8562adb7597054a1df1.gif"
         },
         {
           name: "Spiderman",
