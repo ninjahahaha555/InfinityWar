@@ -33,7 +33,7 @@ export default {
   margin-top: 60px;
 }
 body {
-  background-image: url(./assets/b1.gif);
+  background-image: url(./assets/b5.gif);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100% 100%;

@@ -7,11 +7,7 @@
     </v-button>
     <br />
     <button v-bind:disabled="end" @click="randomDamage()" class="btn btn-info">Attack{{Label}}</button>
-    <button
-      v-bind:disabled="end"
-      @click="randomSpDamage()"
-      class="btn btn-info"
-    >Special Attack{{Label}}</button>
+    <button v-bind:disabled="end" @click="randomSpDamage()" class="btn btn-info">Special Attack{{Label}}</button>
 
     <div class="row text-light ">
       <div class="col-sm">
@@ -23,7 +19,7 @@
         <img :src="imagePlayer" :height="hp1" />
       </div>
 
-      <div class="col-sm">
+      <div class="col-sm text-danger">
         <h1 v-if="hp1 <= 0 & hp2 <=0">
           <br />
           <img src="https://lh3.googleusercontent.com/proxy/grMJMZ4aGoD-1mQtKWvqXh4zuaEWW47l1nirZw_E8B4hR2Or3Xnce6LPym46UgB0PEDphc7ri4Gb9024wJCHw5SJw3b-46oSVxVYumgVC81SwvgmjgKE3vb1m27amFOaCDtHVQlUo8wuM-GIvUI9cBDQ2G2onAyuhHoQFXjr1lz6L6kKl2xkS2XR1xokkUUhLRqPhVRCrcLYYHDtK2ylMgil1-U-RVA">
@@ -39,7 +35,7 @@
           <img src="https://lh3.googleusercontent.com/proxy/grMJMZ4aGoD-1mQtKWvqXh4zuaEWW47l1nirZw_E8B4hR2Or3Xnce6LPym46UgB0PEDphc7ri4Gb9024wJCHw5SJw3b-46oSVxVYumgVC81SwvgmjgKE3vb1m27amFOaCDtHVQlUo8wuM-GIvUI9cBDQ2G2onAyuhHoQFXjr1lz6L6kKl2xkS2XR1xokkUUhLRqPhVRCrcLYYHDtK2ylMgil1-U-RVA">
           {{randomMonster}} WIN
         </h1>
-        <br /><br /><br /><br />
+        <br /><br /><br />
         <p v-if="hp1!=0 & hp2!=0">
           <img
             src="https://cdn.discordapp.com/attachments/392353546332405763/746090155282006126/pngegg_6.png"
@@ -203,10 +199,12 @@ export default {
       else if (this.hp1 <= 0) {
         this.hp1 = 0;
         this.end = true;
+        this.imageMonster = this.monster[this.chosenNumber2].image1;
       }
       else if (this.hp2 <= 0) {
         this.hp2 = 0;
         this.end = true;
+        this.imagePlayer = this.player[this.chosenNumber1].image1;
       }
     },
 
@@ -227,10 +225,12 @@ export default {
       else if (this.hp1 <= 0) {
         this.hp1 = 0;
         this.end = true;
+        this.imageMonster = this.monster[this.chosenNumber2].image1
       }
       else if (this.hp2 <= 0) {
         this.hp2 = 0;
         this.end = true;
+        this.imagePlayer = this.player[this.chosenNumber1].image1;
       }
     },
   },
