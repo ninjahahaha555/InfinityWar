@@ -46,7 +46,6 @@
           />
         </p>
       </div>
-
       <div class="col-sm">
         <p>{{randomMonster}}</p>
         <p>HP : {{hp2}}</p>
@@ -73,7 +72,7 @@ export default {
       imageMonster: "",
       hp1: "1",
       hp2: "1",
-      end: false,
+      end: true,
       healthbar:
         "https://i.ppy.sh/bca61e3c2183a86ddb4c1d75914fab845e2b128f/687474703a2f2f692e696d6775722e636f6d2f6953766c5662432e706e67",
       audios: [
@@ -185,7 +184,6 @@ export default {
       this.randomPlayer = this.player[this.chosenNumber1].name;
       this.hp1 = this.player[this.chosenNumber1].hp;
       this.imagePlayer = this.player[this.chosenNumber1].image1;
-
       this.chosenNumber2 = Math.floor(Math.random() * this.monster.length);
       this.randomMonster = this.monster[this.chosenNumber2].name;
       this.hp2 = this.monster[this.chosenNumber2].hp;
@@ -196,11 +194,9 @@ export default {
       this.randomPlayerAttack = Math.max(Math.floor(Math.random() * 10) + 1, 3);
       this.hp2 -= this.randomPlayerAttack;
       this.imagePlayer = this.player[this.chosenNumber1].image2;      
-      
       this.randomMonsterAttack = Math.max(Math.floor(Math.random() * 15) + 1,5);
       this.hp1 -= this.randomMonsterAttack;
       this.imageMonster = this.monster[this.chosenNumber2].image2;
-
       if (this.hp1 <= 0 & this.hp2 <=0) {
         this.hp1 = 0;
         this.hp2 = 0;
@@ -221,11 +217,9 @@ export default {
       this.randomPlayerAttack = Math.max(Math.floor(Math.random() * 20) + 1,10);
       this.hp2 -= this.randomPlayerAttack;
       this.imagePlayer = this.player[this.chosenNumber1].image3;      
-
       this.randomMonsterAttack = Math.max(Math.floor(Math.random() * 15) + 1,5);
       this.hp1 -= this.randomMonsterAttack;
       this.imageMonster = this.monster[this.chosenNumber2].image2;    
-
       if (this.hp1 <= 0 & this.hp2 <=0) {
         this.hp1 = 0;
         this.hp2 = 0;
